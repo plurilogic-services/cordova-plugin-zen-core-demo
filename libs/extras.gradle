@@ -1,0 +1,13 @@
+android {
+    // Zen DB interfaces.
+    sourceSets {
+        main {
+            // let gradle pack these libraries into apk
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}

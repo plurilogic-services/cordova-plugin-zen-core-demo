@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-zen-core-demo" version="0.0.1"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Zen Core Demo Version</name>
+    <description>Actian's cordova plugins for the Zen Core Embedded Database</description>
+    <author>Daniel Arsenault @ Plurilogic</author>
+    <keywords>actian,zen,embedded,database,cordova</keywords>
+    <license>Propriatary</license>
+
+    <!-- #region Javascript/Cordova -->
+    <js-module name="BtrieveDbManager" src="www/BtrieveDbManager.js">
+        <clobbers target="BtrieveDbManager" />
+        <runs/>
+    </js-module>
+    <js-module name="BtrieveCordova" src="www/BtrieveCordova.js">
+        <runs/>
+    </js-module>
+    <js-module name="Btrieve" src="www/Btrieve.js">
+        <clobbers target="Btrieve" />
+        <runs/>
+    </js-module>
+    <js-module name="BtrieveKeySegment" src="www/BtrieveKeySegment.js">
+        <clobbers target="BtrieveKeySegment" />
+        <runs/>
+    </js-module>
+    <js-module name="BtrieveIndexAttributes" src="www/BtrieveIndexAttributes.js">
+        <clobbers target="BtrieveIndexAttributes" />
+        <runs/>
+    </js-module>
+    <js-module name="BtrieveFileAttributes" src="www/BtrieveFileAttributes.js">
+        <clobbers target="BtrieveFileAttributes" />
+        <runs/>
+    </js-module>
+    <js-module name="BtrieveFile" src="www/BtrieveFile.js">
+        <clobbers target="BtrieveFile" />
+        <runs/>
+    </js-module>
+    <js-module name="BtrieveClient" src="www/BtrieveClient.js">
+        <clobbers target="BtrieveClient" />
+        <runs/>
+    </js-module>
+    <!-- #endregion -->
+
+    <!-- #region Native -->
+    <!-- #region Android -->
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="CDVDbManager">
+                <param name="android-package" value="com.actian.zen.cordova.plugin.CDVDbManager" />
+                <param name="onload" value="true" />
+            </feature>
+            <feature name="CDVBtrieveCordova">
+                <param name="android-package" value="com.actian.zen.cordova.plugin.CDVBtrieveCordova" />
+                <param name="onload" value="false" />
+            </feature>
+            <feature name="CDVBtrieve">
+                <param name="android-package" value="com.actian.zen.cordova.plugin.CDVBtrieve" />
+                <param name="onload" value="true" />
+            </feature>
+            <feature name="CDVBtrieveKeySegment">
+                <param name="android-package" value="com.actian.zen.cordova.plugin.CDVBtrieveKeySegment" />
+                <param name="onload" value="true" />
+            </feature>
+            <feature name="CDVBtrieveIndexAttributes">
+                <param name="android-package" value="com.actian.zen.cordova.plugin.CDVBtrieveIndexAttributes" />
+                <param name="onload" value="true" />
+            </feature>
+            <feature name="CDVBtrieveFileAttributes">
+                <param name="android-package" value="com.actian.zen.cordova.plugin.CDVBtrieveFileAttributes" />
+                <param name="onload" value="true" />
+            </feature>
+            <feature name="CDVBtrieveFile">
+                <param name="android-package" value="com.actian.zen.cordova.plugin.CDVBtrieveFile" />
+                <param name="onload" value="true" />
+            </feature>
+            <feature name="CDVBtrieveClient">
+                <param name="android-package" value="com.actian.zen.cordova.plugin.CDVBtrieveClient" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        <!-- #region Actian Zen Android Libraries -->
+        <lib-file src="libs/btrieveCpp.jar" arch="device" />
+        <framework src="libs/extras.gradle" custom="true" type="gradleReference"/>
+        <lib-file src="libs/arm64-v8a" arch="device" />
+        <lib-file src="libs/arm64-v8a" arch="device" />
+        <lib-file src="libs/arm64-v8a" arch="device" />
+        <lib-file src="libs/armeabi-v7a" arch="device" />
+        <lib-file src="libs/armeabi-v7a" arch="device" />
+        <lib-file src="libs/armeabi-v7a" arch="device" />
+        <lib-file src="libs/x86" arch="device" />
+        <lib-file src="libs/x86" arch="device" />
+        <lib-file src="libs/x86" arch="device" />
+        <source-file src="assets/zendb.config" target-dir="assets" />
+        <!-- #endregion -->
+
+        <!-- #region Plugin Java Sources -->
+        <source-file src="src/android/com/actian/zen/cordova/plugin/CDVDbManager.java" target-dir="src/com/actian/zen/cordova/plugin/" />
+        <source-file src="src/android/com/actian/zen/cordova/plugin/CDVBtrieveCordova.java" target-dir="src/com/actian/zen/cordova/plugin/" />
+        <source-file src="src/android/com/actian/zen/cordova/plugin/CDVBtrieve.java" target-dir="src/com/actian/zen/cordova/plugin/" />
+        <source-file src="src/android/com/actian/zen/cordova/plugin/CDVBtrieveKeySegment.java" target-dir="src/com/actian/zen/cordova/plugin/" />
+        <source-file src="src/android/com/actian/zen/cordova/plugin/CDVBtrieveIndexAttributes.java" target-dir="src/com/actian/zen/cordova/plugin/" />
+        <source-file src="src/android/com/actian/zen/cordova/plugin/CDVBtrieveFileAttributes.java" target-dir="src/com/actian/zen/cordova/plugin/" />
+        <source-file src="src/android/com/actian/zen/cordova/plugin/CDVBtrieveFile.java" target-dir="src/com/actian/zen/cordova/plugin/" />
+        <source-file src="src/android/com/actian/zen/cordova/plugin/CDVBtrieveClient.java" target-dir="src/com/actian/zen/cordova/plugin/" />
+        <!-- #endregion -->
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+    </platform>
+    <!-- #endregion -->
+
+    <!-- #region iOS -->
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="CDVDbManager">
+                <param name="ios-package" value="CDVDbManager" />
+                <param name="onload" value="true" />
+            </feature>
+            <feature name="CDVBtrieveCordova">
+                <param name="ios-package" value="CDVBtrieveCordova" />
+                <param name="onload" value="false" />
+            </feature>
+            <feature name="CDVBtrieve">
+                <param name="ios-package" value="CDVBtrieve" />
+                <param name="onload" value="true" />
+            </feature>
+            <feature name="CDVBtrieveKeySegment">
+                <param name="ios-package" value="CDVBtrieveKeySegment" />
+                <param name="onload" value="true" />
+            </feature>
+            <feature name="CDVBtrieveIndexAttributes">
+                <param name="ios-package" value="CDVBtrieveIndexAttributes" />
+                <param name="onload" value="true" />
+            </feature>
+            <feature name="CDVBtrieveFileAttributes">
+                <param name="ios-package" value="CDVBtrieveFileAttributes" />
+                <param name="onload" value="true" />
+            </feature>
+            <feature name="CDVBtrieveFile">
+                <param name="ios-package" value="CDVBtrieveFile" />
+                <param name="onload" value="true" />
+            </feature>
+            <feature name="CDVBtrieveClient">
+                <param name="ios-package" value="CDVBtrieveClient" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <!-- #region Actian Zen iOS Frameworks -->
+        <framework src="frameworks/iphoneos/ZenDB.framework" custom="true" weak="false" embed="true" />
+        <framework src="frameworks/iphoneos/ZenDBClient.framework" custom="true" weak="false" embed="true" />
+        <framework src="frameworks/iphoneos/ZenDBClientAPI.framework" custom="true" weak="false" />
+
+        <source-file src="frameworks/iphoneos/ZenDB.framework" target-dir="lib" framework="true" />
+        <source-file src="frameworks/iphoneos/ZenDBClient.framework" target-dir="lib" framework="true" />
+        <!-- #endregion -->
+
+        <!-- #region Plugin Objective-C Sources -->
+        <header-file src="src/ios/CDVBtrieveCordova.h" />
+        <source-file src="src/ios/CDVBtrieveCordova.mm" />
+        <header-file src="src/ios/CDVBtrieve.h" />
+        <source-file src="src/ios/CDVBtrieve.mm" />
+        <header-file src="src/ios/CDVBtrieveKeySegment.h" />
+        <source-file src="src/ios/CDVBtrieveKeySegment.mm" />
+        <header-file src="src/ios/CDVBtrieveIndexAttributes.h" />
+        <source-file src="src/ios/CDVBtrieveIndexAttributes.mm" />
+        <header-file src="src/ios/CDVBtrieveFileAttributes.h" />
+        <source-file src="src/ios/CDVBtrieveFileAttributes.mm" />
+        <header-file src="src/ios/CDVBtrieveFile.h" />
+        <source-file src="src/ios/CDVBtrieveFile.mm" />
+        <header-file src="src/ios/CDVBtrieveClient.h" />
+        <source-file src="src/ios/CDVBtrieveClient.mm" />
+        <header-file src="src/ios/CDVDbManager.h" />
+        <source-file src="src/ios/CDVDbManager.mm" />
+        <!-- #endregion -->
+    </platform>
+    <!-- #endregion -->
+    <!-- #endregion -->
+</plugin>
